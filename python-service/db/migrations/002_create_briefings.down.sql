@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS briefing_metrics CASCADE;
+DROP TABLE IF EXISTS briefing_risks CASCADE;
+DROP TABLE IF EXISTS briefing_key_points CASCADE;
+DROP TABLE IF EXISTS briefings CASCADE;

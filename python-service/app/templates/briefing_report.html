@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .report {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+
+        .report-header {
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .report-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            border-radius: 4px;
+        }
+
+        .company-info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .company-info-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .company-info-value {
+            font-size: 16px;
+            color: #1f2937;
+            font-weight: 500;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .summary-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #374151;
+            padding: 15px;
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            border-radius: 4px;
+        }
+
+        .recommendation-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #374151;
+            padding: 15px;
+            background-color: #dcfce7;
+            border-left: 4px solid #16a34a;
+            border-radius: 4px;
+        }
+
+        .list-item {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #374151;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-item-bullet {
+            color: #3b82f6;
+            font-weight: 700;
+            margin-right: 12px;
+            min-width: 20px;
+        }
+
+        .list-item-content {
+            flex: 1;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .metric-card {
+            padding: 15px;
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+        }
+
+        .metric-name {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            text-align: right;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .footer-divider {
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+
+            .report {
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .container {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="report">
+            <!-- Report Header -->
+            <div class="report-header">
+                <div class="report-title">{{ title }}</div>
+            </div>
+
+            <!-- Company Information Block -->
+            <div class="company-info">
+                <div class="company-info-item">
+                    <span class="company-info-label">Company</span>
+                    <span class="company-info-value">{{ company_name }}</span>
+                </div>
+                <div class="company-info-item">
+                    <span class="company-info-label">Ticker</span>
+                    <span class="company-info-value">{{ ticker }}</span>
+                </div>
+                <div class="company-info-item">
+                    <span class="company-info-label">Sector</span>
+                    <span class="company-info-value">{{ sector }}</span>
+                </div>
+                <div class="company-info-item">
+                    <span class="company-info-label">Analyst</span>
+                    <span class="company-info-value">{{ analyst_name }}</span>
+                </div>
+            </div>
+
+            <!-- Executive Summary Section -->
+            <div class="section">
+                <h2 class="section-title">Executive Summary</h2>
+                <div class="summary-text">
+                    {{ summary }}
+                </div>
+            </div>
+
+            <!-- Key Points Section -->
+            {% if key_points %}
+            <div class="section">
+                <h2 class="section-title">Key Points</h2>
+                {% for point in key_points %}
+                <div class="list-item">
+                    <span class="list-item-bullet">•</span>
+                    <span class="list-item-content">{{ point.content }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Risks Section -->
+            {% if risks %}
+            <div class="section">
+                <h2 class="section-title">Risks</h2>
+                {% for risk in risks %}
+                <div class="list-item">
+                    <span class="list-item-bullet">⚠</span>
+                    <span class="list-item-content">{{ risk.content }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Recommendation Section -->
+            <div class="section">
+                <h2 class="section-title">Recommendation</h2>
+                <div class="recommendation-text">
+                    {{ recommendation }}
+                </div>
+            </div>
+
+            <!-- Metrics Section -->
+            {% if metrics %}
+            <div class="section">
+                <h2 class="section-title">Metrics</h2>
+                <div class="metrics">
+                    {% for metric in metrics %}
+                    <div class="metric-card">
+                        <div class="metric-name">{{ metric.name }}</div>
+                        <div class="metric-value">{{ metric.value }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="footer-divider">---</div>
+                <div>Generated on {{ generated_date }} at {{ generated_time }}</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
