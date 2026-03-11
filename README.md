@@ -369,23 +369,6 @@ x-workspace-id: workspace-456
   "updatedAt": "2024-01-01T12:05:00Z"
 }
 ```
-
-### Processing Queued Jobs
-
-To process background jobs locally:
-
-```typescript
-// In your app's bootstrap or via a CLI command
-import { BackgroundJobProcessorService } from './candidate/background-job-processor.service';
-
-const processor = app.get(BackgroundJobProcessorService);
-await processor.processPendingJobs();
-```
-
-In production, you would run workers in a separate process using a real queue system (Redis, RabbitMQ, Bull, Temporal, etc.).
-
----
-
 ## Architecture Notes
 
 ### Part A: Python/FastAPI Briefing Service
@@ -558,7 +541,7 @@ cd ts-service && npm run test:e2e
 - [x] Async job queue with worker
 - [x] Access control (workspace scoping)
 - [x] LLM provider integration (Gemini)
-- [x] Comprehensive tests for Python service
+- [x] Tests for Python service
 - [x] Documentation with setup/run instructions
 
 See [NOTES.md](./NOTES.md) for design decisions and improvement opportunities.
