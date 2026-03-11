@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthModule } from './auth/auth.module';
+import { CandidateModule } from './candidate/candidate.module';
 import { defaultDatabaseUrl, getTypeOrmOptions } from './config/typeorm.options';
 import { HealthModule } from './health/health.module';
 import { LlmModule } from './llm/llm.module';
@@ -21,6 +22,7 @@ import { SampleModule } from './sample/sample.module';
     HealthModule,
     QueueModule,
     LlmModule,
+    CandidateModule,
     SampleModule,
   ],
 })
